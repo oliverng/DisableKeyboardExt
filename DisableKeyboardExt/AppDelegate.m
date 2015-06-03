@@ -2,8 +2,9 @@
 //  AppDelegate.m
 //  DisableKeyboardExt
 //
-//  Created by Oliver and Vienne Ng on 2/6/15.
-//  Copyright (c) 2015 ONG. All rights reserved.
+//  Created by Oliver Ng on 30/5/15.
+//  Copyright (c) 2015 Security Compass. All rights reserved.
+//  http://www.securitycompass.com
 //
 
 #import "AppDelegate.h"
@@ -14,6 +15,14 @@
 
 @implementation AppDelegate
 
+// This code is based upon Apple documentation found for IOS8 keyboard extensions
+// implementing this function overrides default custom keyboard behavior for higher security requirements
+- (BOOL)application:(UIApplication *)application shouldAllowExtensionPointIdentifier:(NSString *)extensionPointIdentifier {
+  if ([extensionPointIdentifier isEqualToString: UIApplicationKeyboardExtensionPointIdentifier]) {
+    return NO;
+  }
+  return YES;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Override point for customization after application launch.
